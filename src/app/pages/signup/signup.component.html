@@ -10,40 +10,55 @@
 
                 <h1 class="text-center">Register here</h1>
 
+                <div class="container">
+                    <!-- {{signupForm.value | json}} -->
+                    <br>
+                    {{userModel | json}}
+                </div>
 
-                <form action="">
+
+                <form #signupForm="ngForm" (ngSubmit)="formSubmit()" autocomplete="off">
                     <!-- Username field -->
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input matInput placeholder="Enter here">
+                        <input matInput placeholder="Enter here" #username="ngModel" [(ngModel)]="userModel.username"
+                            name="username" required>
+                        <mat-hint [class.d-none]="username.valid || username.untouched">Username is required</mat-hint>
                     </mat-form-field>
                     <!-- Password field -->
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput placeholder="Password">
+                        <input type="password" matInput placeholder="Password" #password="ngModel"
+                            [(ngModel)]="userModel.password" name="password" required>
+                        <mat-hint [class.d-none]="password.valid || password.untouched">Password is required</mat-hint>
                     </mat-form-field>
                     <!-- Name field -->
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input matInput placeholder="Enter here">
+                        <input matInput placeholder="Enter here" [(ngModel)]="userModel.name" #name="ngModel"
+                            name="name" required>
+                        <mat-hint [class.d-none]="name.valid || name.untouched">Name is required</mat-hint>
                     </mat-form-field>
                     <!-- Surname field -->
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Surname</mat-label>
                         <input matInput placeholder="Enter here">
+                        <!-- <mat-hint [class.d-none]="password.valid || password.untouched">Password is required</mat-hint> -->
                     </mat-form-field>
                     <!-- Email field -->
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Email</mat-label>
                         <input type="email" matInput placeholder="email">
+                        <!-- <mat-hint [class.d-none]="password.valid || password.untouched">Password is required</mat-hint> -->
                     </mat-form-field>
                     <!-- Phone number field -->
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Phone number</mat-label>
                         <input matInput placeholder="Enter here">
+                        <!-- <mat-hint [class.d-none]="password.valid || password.untouched">Password is required</mat-hint> -->
                     </mat-form-field>
                     <div class="container text-center">
-                        <button mat-raised-button color="primary">Register</button>
+                        <button type="submit" mat-raised-button color="primary">Register</button>
                         <button style="margin-left: 20px;" mat-raised-button color="warn">Clear</button>
                     </div>
                 </form>

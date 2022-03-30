@@ -15,3 +15,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .margin-left{
       margin-left: 20px;
   }
+  .d-none{
+      display: none;
+  }
